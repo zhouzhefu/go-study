@@ -16,7 +16,7 @@ func (v Vertex) String() string {
 }
 
 //Similar to Stringer, error is also a built-in interface: 
-//type error interface {Error() string}
+//type error interface {Error() string}, here exampled: 
 
 
 
