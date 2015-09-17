@@ -37,9 +37,20 @@ func (s *Struct) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, s)
 }
 
+/**
+* Or simply use a function as the handler, but please note the method to add it to http 
+* route is a bit different, using HandleFunc() instead of Handle(). 
+*/
+func sayHello(w http.ResponseWriter, r *http.Request) {
+	resp := "It is a function handler."
+	fmt.Println(resp)
+	fmt.Fprint(w, resp)
+}
+
 func runAddedHandler() {
 	http.Handle("/string", String("I'm a frayed knot."))
 	http.Handle("/struct", &Struct{"Hello you", "hehe"})
+	http.HandleFunc("/func", sayHello)
 	//listen to "nil" means use added handler, never hit DefaultServeMux
 	err := http.ListenAndServe(":4000", nil)
 	if (err != nil) {
