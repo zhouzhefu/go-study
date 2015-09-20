@@ -63,8 +63,22 @@ func mutatingMap() {
 	fmt.Println("Zero value of dummy key?", elem1, exists1)
 }
 
+func traverseMap() {
+	m := map[string]int {
+		"key1": 10, 
+		"key2": 20, 
+		"key3": 30, 
+	}
+	
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+}
+
 func main() {
 	map1()
 	map2()
 	mutatingMap()
+	
+	traverseMap()
 }
